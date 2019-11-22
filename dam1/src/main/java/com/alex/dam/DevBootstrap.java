@@ -44,7 +44,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
 
 
         //enter addresses from json file
-        String fisier = "D:\\GitRepo\\cplusplus\\dam1\\src\\main\\java\\com\\alex\\dam\\adrese1.json";
+        String fisier = "/Users/Alex/GitCursSIIT/dam1/src/main/java/com/alex/dam/adrese1.json";
         File file = new File(fisier);
 
 

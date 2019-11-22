@@ -1,8 +1,6 @@
 package com.alex.dam.Model;
 
 
-import org.hibernate.annotations.GeneratorType;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -12,6 +10,9 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Offer offer;
 
     @NotNull
     private String name;
