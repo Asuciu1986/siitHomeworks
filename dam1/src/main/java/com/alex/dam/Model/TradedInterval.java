@@ -5,10 +5,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import java.util.Objects;
+import javax.persistence.Id;
 
 @Entity
 public class TradedInterval {
 
+    @Id
     private Long id;
 
     @OneToOne
