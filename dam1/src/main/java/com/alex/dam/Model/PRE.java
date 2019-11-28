@@ -1,10 +1,16 @@
-package com.alex.dam.Model;
+package com.alex.dam.model;
+
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class PRE extends Company {
 
@@ -18,39 +24,12 @@ public class PRE extends Company {
     @OneToMany(mappedBy = "pre", cascade = CascadeType.ALL)
     private List<Participant> participants = new ArrayList<>();
 
-    public List<Participant> getParticipants() {
-        return participants;
-    }
-
-    public void setParticipants(List<Participant> participants) {
-        this.participants = participants;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public PRE(){
-        super();
-    }
-
-    public PRE(String name, String registrationNumber, Status companyStatus, String codPre, Address address) {
+    @Builder
+    public PRE(Long id, String name, String registrationNumber, Status companyStatus, String codPre, Address address) {
         //override constructor base class
-        super(name,registrationNumber,companyStatus);
+        super(id, name,registrationNumber,companyStatus);
         this.codPre=codPre;
         this.address=address;
-    }
-
-    public String getCodPre() {
-        return codPre;
-    }
-
-    public void setCodPre(String codPre) {
-        this.codPre = codPre;
     }
 
 }

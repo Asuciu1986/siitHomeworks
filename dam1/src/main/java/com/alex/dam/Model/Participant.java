@@ -1,25 +1,28 @@
-package com.alex.dam.Model;
+package com.alex.dam.model;
 
-import org.hibernate.annotations.GeneratorType;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Participant extends Company {
 
+    @Builder
+    public Participant(Long id, String name, String registrationNumber, Status companyStatus,PRE pre, Address address){
+        super(id, name, registrationNumber, companyStatus);
+        this.pre = pre;
+        this.address = address;
+    }
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     private PRE pre;
-
-    public PRE getPre() {
-        return pre;
-    }
-
-    public void setPre(PRE pre) {
-        this.pre = pre;
-    }
 
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
@@ -27,20 +30,4 @@ public class Participant extends Company {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "participant")
     private List<User> users;
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-
-    public Participant(String name, String registrationNumber, Status companyStatus, PRE pre,Address address){
-        //override constructor base class
-        super(name,registrationNumber,companyStatus);
-        this.pre=pre;
-        this.address=address;
-
-    }
 }

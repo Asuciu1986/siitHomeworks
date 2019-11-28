@@ -1,8 +1,16 @@
-package com.alex.dam.Model;
+package com.alex.dam.model;
+
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Objects;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(exclude = "offer")
+@Builder
 @Entity
 public class OfferInstrument {
 
@@ -22,60 +30,4 @@ public class OfferInstrument {
 
     private Float price;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Offer getOffer() {
-        return offer;
-    }
-
-    public void setOffer(Offer offer) {
-        this.offer = offer;
-    }
-
-    public Integer getInstrument() {
-        return instrument;
-    }
-
-    public void setInstrument(Integer instrument) {
-        this.instrument = instrument;
-    }
-
-    public Float getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Float quantity) {
-        this.quantity = quantity;
-    }
-
-    public Float getPrice() {
-        return price;
-    }
-
-    public void setPrice(Float price) {
-        this.price = price;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        OfferInstrument that = (OfferInstrument) o;
-        return id.equals(that.id) &&
-                offer.equals(that.offer) &&
-                instrument.equals(that.instrument) &&
-                quantity.equals(that.quantity) &&
-                price.equals(that.price);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, offer, instrument, quantity, price);
-    }
 }

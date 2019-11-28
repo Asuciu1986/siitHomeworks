@@ -1,4 +1,4 @@
-package com.alex.dam.Model;
+package com.alex.dam.model;
 
 import javax.persistence.*;
 import java.util.Date;

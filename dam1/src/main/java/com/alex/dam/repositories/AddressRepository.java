@@ -1,8 +1,7 @@
-package com.alex.dam.Repository;
+package com.alex.dam.repositories;
 
-import com.alex.dam.Model.Address;
+import com.alex.dam.model.Address;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Component;
 
 public interface AddressRepository extends CrudRepository<Address,Long> {
 

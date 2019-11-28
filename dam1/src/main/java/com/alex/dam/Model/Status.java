@@ -1,7 +1,5 @@
-package com.alex.dam.Model;
+package com.alex.dam.model;
 
-
-import javax.persistence.Entity;
 
 public enum Status {
     ACTIVE, INACTIVE, SUSPENDED
