@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sell Energy Offers</title>
+</head>
+<body>
+<h2>Sell Offers</h2>
+
+<table id="" class="table table-striped">
+    <thead>
+    <tr>
+        <th>Creation Date</th>
+        <th>Participant</th>
+        <th>Version</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="buyenergyoffer:${buyenergyoffers}">
+        <td th:text="${buyenergyoffer.date}"></td>
+        <td th:text="${buyenergyoffer.user.participant.name}"></td>
+        <td th:text="${buyenergyoffer.version}"></td>
+
+        <!--        <td><span th:each="specialty : ${vet.specialities}"-->
+        <!--                  th:text="${specialty.description + ' '}" /> <span-->
+        <!--                th:if="${vet?.specialities?.size() == 0}">none</span></td>-->
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>

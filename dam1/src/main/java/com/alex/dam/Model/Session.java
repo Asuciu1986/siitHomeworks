@@ -20,10 +20,10 @@ public class Session {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @Temporal(TemporalType.DATE)
     private Date tradingDate;
 
-    @NotNull
+    @Temporal(TemporalType.DATE)
     private Date deliveryDate;
 
     @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -32,6 +32,10 @@ public class Session {
     @OneToMany(mappedBy = "session", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<AggregatedCurve> aggregatedCurves = new ArrayList<>();
 
+    public Session(Date tradingDate, Date deliveryDate) {
+        this.tradingDate = tradingDate;
+        this.deliveryDate=deliveryDate;
+    }
 }
 
 

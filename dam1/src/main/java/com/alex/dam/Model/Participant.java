@@ -15,10 +15,15 @@ import java.util.List;
 public class Participant extends Company {
 
     @Builder
-    public Participant(Long id, String name, String registrationNumber, Status companyStatus,PRE pre, Address address){
+    public Participant(Long id, String name, String registrationNumber, Status companyStatus,
+                       PRE pre, Address address, List<User> users){
         super(id, name, registrationNumber, companyStatus);
         this.pre = pre;
         this.address = address;
+
+        if(users!=null){
+            this.users=users;
+        }
     }
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)

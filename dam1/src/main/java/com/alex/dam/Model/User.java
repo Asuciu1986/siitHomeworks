@@ -4,6 +4,8 @@ package com.alex.dam.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Setter
 @Getter
@@ -18,8 +20,8 @@ public class User {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Offer offer;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private List<Offer> offers = new ArrayList<>();
 
     private String name;
     private String email;
