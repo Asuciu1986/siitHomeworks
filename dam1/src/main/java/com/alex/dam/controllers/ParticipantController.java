@@ -32,7 +32,7 @@ public class ParticipantController {
 
     }
 
-    @RequestMapping({"/index"})
+    @RequestMapping("/index")
     public String listParticipants(Model model){
 
         model.addAttribute("participants", participantService.findAll());
@@ -56,7 +56,7 @@ public class ParticipantController {
     @PostMapping("/new")
     public String processCreationForm(@Valid Participant participant,BindingResult result){
         if(result.hasErrors()){
-            return VIEWS_PARTICIPANT_CREATE_OR_UPDATE_FORM;
+            return "participants/index";
         }
         else{
             Participant savedParticipant = participantService.save(participant);
@@ -78,7 +78,7 @@ public class ParticipantController {
         else{
             participant.setId(participantId);
             Participant savedParticipant = participantService.save(participant);
-            return "redirect:/participant/" + savedParticipant.getId();
+            return "redirect:/participants/" + savedParticipant.getId();
 
         }
     }

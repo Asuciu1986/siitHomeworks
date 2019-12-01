@@ -25,6 +25,8 @@ public class Participant extends Company {
             this.users=users;
         }
     }
+
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     private PRE pre;
@@ -34,5 +36,7 @@ public class Participant extends Company {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "participant")
     private List<User> users;
+
+
 
 }

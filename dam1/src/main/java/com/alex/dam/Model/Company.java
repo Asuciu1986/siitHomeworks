@@ -29,4 +29,7 @@ public class Company {
     @Enumerated(EnumType.STRING)
     private Status companyStatus;
 
+    public boolean isNew(){
+        return this.id == null;
+    }
 }
