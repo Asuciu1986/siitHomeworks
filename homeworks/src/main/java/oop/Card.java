@@ -8,13 +8,13 @@ public class Card {
     private String cardNumber;
     private Date expirationDate;
 
-    public Card(String ownerName, String cardNumber, Date expirationDate) {
+    Card(String ownerName, String cardNumber, Date expirationDate) {
         this.ownerName = ownerName;
         this.cardNumber = cardNumber;
         this.expirationDate = expirationDate;
     }
 
-    public boolean checkIfExpired(){
+    boolean checkIfExpired(){
         return expirationDate.compareTo(new Date()) < 0;
     }
 
@@ -26,7 +26,7 @@ public class Card {
         this.ownerName = ownerName;
     }
 
-    public String getCardNumber() {
+    String getCardNumber() {
         return cardNumber;
     }
 

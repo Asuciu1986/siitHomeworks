@@ -8,7 +8,7 @@ public class Pos {
 
     private List<BankAccount> bankAccounts = new ArrayList<>();
 
-    public void addKnownBankAccount(BankAccount bankAccount){
+    void addKnownBankAccount(BankAccount bankAccount){
         bankAccounts.add(bankAccount);
     }
 
@@ -22,8 +22,8 @@ public class Pos {
         return bankAccount;
     }
 
-    public String pay(double amount, Card card){
-        String output="";
+    String pay(double amount, Card card){
+        String output;
         BankAccount bankAccount = linkCardToBankAccout(card);
         if(card.checkIfExpired()){
             return "Card expired. Contact your bank.";

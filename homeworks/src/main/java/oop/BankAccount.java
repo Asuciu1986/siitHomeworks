@@ -9,7 +9,7 @@ public class BankAccount {
     private double balance;
     private List<Card> attachedCardNumbers = new ArrayList<>();
 
-    public BankAccount(String iban) {
+    BankAccount(String iban) {
         this.iban = iban;
     }
 
@@ -23,7 +23,7 @@ public class BankAccount {
         }
     }
 
-    public String withdrawMoney(double amount) {
+    String withdrawMoney(double amount) {
         if(balance>=amount) {
             balance -= amount;
             return "Transaction approved.";
@@ -33,7 +33,7 @@ public class BankAccount {
         }
     }
 
-    public void attachCard(Card card){
+    void attachCard(Card card){
         attachedCardNumbers.add(card);
     }
 
@@ -42,7 +42,7 @@ public class BankAccount {
         return attachedCardNumbers.contains(card);
     }
 
-    public String getIban() {
+    String getIban() {
         return iban;
     }
 
@@ -50,15 +50,15 @@ public class BankAccount {
         this.iban = iban;
     }
 
-    public double getBalance() {
+    double getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    void setBalance(double balance) {
         this.balance = balance;
     }
 
-    public List<Card> getAttachedCardNumbers() {
+    List<Card> getAttachedCardNumbers() {
         return attachedCardNumbers;
     }
 
