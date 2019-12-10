@@ -1,6 +1,7 @@
-package oop;
+package oop.bankingwithlist;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Card {
 
@@ -40,6 +41,21 @@ public class Card {
 
     public void setExpirationDate(Date expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Card card = (Card) o;
+        return ownerName.equals(card.ownerName) &&
+                cardNumber.equals(card.cardNumber) &&
+                expirationDate.equals(card.expirationDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ownerName, cardNumber, expirationDate);
     }
 }
 

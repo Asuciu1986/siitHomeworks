@@ -1,4 +1,4 @@
-package oop;
+package oop.bankingwithlist;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package oop;
+package oop.bankingwithlist;
 
 import java.util.ArrayList;
 import java.util.List;
