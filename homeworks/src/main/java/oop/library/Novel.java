@@ -7,7 +7,7 @@ This class extends book and adds novel type as attribute
  */
 public class Novel extends Book{
 
-    NovelType type;
+    private NovelType type;
 
     public Novel() {
     }
