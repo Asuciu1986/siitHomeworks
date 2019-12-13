@@ -3,6 +3,10 @@ package oop.library;
 import java.util.Arrays;
 import java.util.Objects;
 
+
+/*
+This class aggregates the books and performs operations to to the array of books
+*/
 public class BookLibrary {
 
     private Book[] books = new Book[20];
@@ -44,6 +48,19 @@ public class BookLibrary {
         return "BookLibrary{" +
                 "books=" + Arrays.toString(books) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BookLibrary that = (BookLibrary) o;
+        return Arrays.equals(books, that.books);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(books);
     }
 }
 
