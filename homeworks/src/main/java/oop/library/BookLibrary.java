@@ -53,10 +53,12 @@ public class BookLibrary {
         this.books = books;
     }
 
-    public String printAllBooks() {
-        return "BookLibrary{" +
-                "books=" + Arrays.toString(books) +
-                '}';
+    public void printAllBooks() {
+        for(Book book:books){
+            if(!Objects.isNull(book)){
+                System.out.println(book.toString());
+            }
+        }
     }
 
     @Override

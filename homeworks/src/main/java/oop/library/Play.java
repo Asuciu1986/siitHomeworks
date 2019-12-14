@@ -18,10 +18,6 @@ public class Play {
         bookLibrary.addBook(new ArtAlbum("MoMa Collection", 700, PaperQuality.COATED));
         bookLibrary.addBook(new Novel("Game of thrones3",7000,NovelType.FANTASY));
 
-        System.out.println();
-        System.out.println("*********************************************");
-        System.out.println();
-
 
         Novel novel1 = new Novel();
         novel1.setName("Lolita");
@@ -32,6 +28,6 @@ public class Play {
         System.out.println(bookLibrary.findBookByName("Game of thrones3"));
         boolean deleted = bookLibrary.deleteBookByName("Game of thrones2");
         System.out.println(deleted);
-        System.out.println(bookLibrary.printAllBooks());
+        bookLibrary.printAllBooks();
     }
 }
