@@ -20,7 +20,16 @@ public class BookLibrary {
         }
     }
 
-    public void deleteBook(String bookName){
+    public Book findBookByName(String bookName){
+        for(Book book:books){
+            if(!Objects.isNull(book)&& book.getName().equals(bookName)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
+    public boolean deleteBookByName(String bookName){
         for(int i=0;i<books.length;i++){
             if(Objects.isNull(books[i])){
                 continue;
@@ -30,9 +39,10 @@ public class BookLibrary {
                     books[i]=books[i+1];
                     ++i;
                 }
-                break;
+                return true;
             }
         }
+        return false;
     }
 
     public Book[] getBooks() {
@@ -43,8 +53,7 @@ public class BookLibrary {
         this.books = books;
     }
 
-    @Override
-    public String toString() {
+    public String printAllBooks() {
         return "BookLibrary{" +
                 "books=" + Arrays.toString(books) +
                 '}';

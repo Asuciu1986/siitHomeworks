@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>PRE Details</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+
+<body>
+<!--/*@thymesVar id="details" type="com.alex.dam.model.Participant"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form  th:object="${details}">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="panel-title">Participant Details</h1>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4 class="font-weight-bold">Company Name:</h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 th:text="${details.name}"></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4 class="font-weight-bold">Registration Number:</h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 th:text="${details.registrationNumber}"></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4 class="font-weight-bold">Status:</h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 th:text="${details.companyStatus}"></h4>
+                                </div>
+                            </div>
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-1">-->
+<!--                                    <h4 class="font-weight-bold">PRE:</h4>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-2">-->
+<!--                                    <h4 th:text="${details.pre.name}"></h4>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Address</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <h4 class="font-weight-bold">Street:</h4>
+                                </div>
+                                <div class="col-md-4">
+                                    <h4 th:text="${details.address.street} + ' ' + ${details.address.streetNumber}"></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <h4 class="font-weight-bold">City:</h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 th:text="${details.address.city}"></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <h4 class="font-weight-bold">Country:</h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 th:text="${details.address.country}"></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <h4 class="font-weight-bold">Phone Number:</h4>
+                                </div>
+                                <div class="col-md-2">
+                                    <h4 th:text="${details.address.phoneNumber}"></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Users</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul>
+                                        <li th:each="user : ${details.users}"
+                                            th:text="${(user.name)}"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

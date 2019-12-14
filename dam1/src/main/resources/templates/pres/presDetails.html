@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>PRE Details</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<!--/*@thymesVar id="details" type="com.alex.dam.model.PRE"*/-->
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form  th:object="${details}">
+                <div class="panel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="panel-title">PRE Details</h1>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4 class="font-weight-bold">PRE Name:</h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 th:text="${details.name}"></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4 class="font-weight-bold">Registration Number:</h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 th:text="${details.registrationNumber}"></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h4 class="font-weight-bold">Status:</h4>
+                                </div>
+                                <div class="col-md-3">
+                                    <h4 th:text="${details.companyStatus}"></h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <h4 class="font-weight-bold">Cod PRE:</h4>
+                                </div>
+                                <div class="col-md-2">
+                                    <h4 th:text="${details.codPre}"></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--                    <div class="panel panel-primary">-->
+<!--                        <div class="panel-heading">-->
+<!--                            <h4 class="panel-title">Address</h4>-->
+<!--                        </div>-->
+<!--                        <div class="panel-body">-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-1">-->
+<!--                                    <h4 class="font-weight-bold">Street:</h4>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-4">-->
+<!--                                    <h4 th:text="${details.address.street} + ' ' + ${details.address.streetNumber}"></h4>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-1">-->
+<!--                                    <h4 class="font-weight-bold">City:</h4>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-3">-->
+<!--                                    <h4 th:text="${details.address.city}"></h4>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-1">-->
+<!--                                    <h4 class="font-weight-bold">Country:</h4>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-3">-->
+<!--                                    <h4 th:text="${details.address.country}"></h4>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-md-1">-->
+<!--                                    <h4 class="font-weight-bold">Phone Number:</h4>-->
+<!--                                </div>-->
+<!--                                <div class="col-md-2">-->
+<!--                                    <h4 th:text="${details.address.phoneNumber}"></h4>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Participants</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul>
+                                        <li th:each="participant : ${details.participants}"
+                                            th:text="${(participant.name)}"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

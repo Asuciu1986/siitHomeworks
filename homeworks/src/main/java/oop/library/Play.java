@@ -18,10 +18,6 @@ public class Play {
         bookLibrary.addBook(new ArtAlbum("MoMa Collection", 700, PaperQuality.COATED));
         bookLibrary.addBook(new Novel("Game of thrones3",7000,NovelType.FANTASY));
 
-
-        bookLibrary.deleteBook("Game of thrones2");
-        System.out.println(bookLibrary.toString());
-
         System.out.println();
         System.out.println("*********************************************");
         System.out.println();
@@ -33,13 +29,9 @@ public class Play {
         novel1.setType(NovelType.PSYCHOLOGICAL);
 
         bookLibrary.addBook(novel1);
-        for(Book book:bookLibrary.getBooks()){
-            if(!Objects.isNull(book)) {
-                System.out.println(book.getName());
-            }
-            else{
-                break;
-            }
-        }
+        System.out.println(bookLibrary.findBookByName("Game of thrones3"));
+        boolean deleted = bookLibrary.deleteBookByName("Game of thrones2");
+        System.out.println(deleted);
+        System.out.println(bookLibrary.printAllBooks());
     }
 }
