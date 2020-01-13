@@ -7,10 +7,17 @@ public class SamsungGalaxyS6 extends Samsung {
 
     private String imei;
 
-
-    public SamsungGalaxyS6(String imei, Color color, Material material) {
+    public SamsungGalaxyS6(Color color, Material material,String imei) {
+        super(color, material);
         this.phoneBatteryLife = batteryLife;
         this.imei = imei;
+    }
 
+    @Override
+    public String toString() {
+        return "SamsungGalaxyS6{" +
+                "phoneBatteryLife=" + phoneBatteryLife +
+                ", imei='" + imei + '\'' +
+                "} " + super.toString();
     }
 }

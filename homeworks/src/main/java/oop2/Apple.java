@@ -1,13 +1,11 @@
 package oop2;
 
-abstract class Samsung implements Phone {
-
+public class Apple {
     private Color color;
     private Material material;
 
-    Samsung(Color color, Material material) {
+    Apple(Color color, Material material) {
         this.color = color;
         this.material = material;
     }
-
 }

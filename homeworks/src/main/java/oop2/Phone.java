@@ -1,18 +1,15 @@
 package oop2;
 
-import javax.net.ssl.SSLContext;
-import java.sql.Time;
 import java.util.*;
 
 public interface Phone {
 
-
-    Set<Contact> contacts = new HashSet<>();
+    Set<Contact> contacts = new LinkedHashSet<>();
     Map<String,List<String>> texts = new HashMap<>();
     List<String> calls = new ArrayList<>();
 
 
-    default void addContact(String index, String phoneNumber, String firstName, String lastName){
+    default void addContact(Integer index, String phoneNumber, String firstName, String lastName){
         Contact contact = new Contact(index,phoneNumber,firstName,lastName);
         contacts.add(contact);
     }
@@ -25,7 +22,7 @@ public interface Phone {
 
     default void sendText(String phoneNumber, String message){
         if(message.length()>100){
-            System.out.println("The message should have maximum 100 characters");
+            System.out.println("The message should have maximum 100 characters. Message was not sent");
         }
 
         else{
@@ -38,18 +35,12 @@ public interface Phone {
     };
 
     default List<String> listMessages(String phoneNumber){
-        if(texts.containsKey(phoneNumber)){
-            return texts.get(phoneNumber);
-        }
-        else{
-           return null;
-        }
+        return texts.getOrDefault(phoneNumber, null);
 
     };
 
     default void placeCall(String phoneNumber){
         calls.add(phoneNumber);
-
 
     };
 

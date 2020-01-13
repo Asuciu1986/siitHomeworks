@@ -2,23 +2,23 @@ package oop2;
 
 public class Contact {
 
-    private String index;
+    private Integer index;
     private String phoneNumber;
     private String firstName;
     private String lastName;
 
-    public Contact(String index, String phoneNumber, String firstName, String lastName) {
+    public Contact(Integer index, String phoneNumber, String firstName, String lastName) {
         this.index = index;
         this.phoneNumber = phoneNumber;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public String getIndex() {
+    public Integer getIndex() {
         return index;
     }
 
-    public void setIndex(String index) {
+    public void setIndex(Integer index) {
         this.index = index;
     }
 
