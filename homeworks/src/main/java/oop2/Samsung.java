@@ -1,6 +1,6 @@
 package oop2;
 
-abstract class Samsung implements Phone {
+public abstract class Samsung implements Phone {
 
     private Color color;
     private Material material;
@@ -9,5 +9,7 @@ abstract class Samsung implements Phone {
         this.color = color;
         this.material = material;
     }
+
+
 
 }

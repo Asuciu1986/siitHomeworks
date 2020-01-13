@@ -1,6 +1,6 @@
 package oop2;
 
-public class Apple {
+public abstract class Apple implements Phone{
     private Color color;
     private Material material;
 
@@ -8,4 +8,5 @@ public class Apple {
         this.color = color;
         this.material = material;
     }
+
 }

@@ -20,29 +20,16 @@ public interface Phone {
         }
     }
 
-    default void sendText(String phoneNumber, String message){
-        if(message.length()>100){
-            System.out.println("The message should have maximum 100 characters. Message was not sent");
-        }
-
-        else{
-            if(!texts.containsKey(phoneNumber)){
-                texts.put(phoneNumber,new ArrayList<>());
-            }
-            texts.get(phoneNumber).add(message);
-            System.out.println("Message sent to " + phoneNumber);
-        }
-    };
+    void sendText(String phoneNumber, String message);
 
     default List<String> listMessages(String phoneNumber){
         return texts.getOrDefault(phoneNumber, null);
 
     };
 
-    default void placeCall(String phoneNumber){
-        calls.add(phoneNumber);
+    void placeCall(String phoneNumber);
 
-    };
+    int getPhoneBatteryLife();
 
     default List<String> listCalls(){
         return calls;

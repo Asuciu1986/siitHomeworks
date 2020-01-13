@@ -32,5 +32,7 @@ public class Play {
         for(String call:calls){
             System.out.println(call);
         }
+
+        System.out.println("Battery left:" + phone.getPhoneBatteryLife());
     }
 }
