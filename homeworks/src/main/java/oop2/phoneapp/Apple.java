@@ -1,18 +1,18 @@
-package oop2;
+package oop2.phoneapp;
 
 import java.util.*;
 
-public abstract class Samsung implements Phone {
-
+public abstract class Apple implements Phone{
     private Color color;
     private Material material;
 
-
+    //todo add call and Message classes and refactor the collections
     Set<Contact> contacts = new LinkedHashSet<>();
     Map<String, List<String>> texts = new HashMap<>();
     List<String> calls = new ArrayList<>();
 
-    Samsung(Color color, Material material) {
+
+    Apple(Color color, Material material) {
         this.color = color;
         this.material = material;
     }
@@ -46,7 +46,7 @@ public abstract class Samsung implements Phone {
 
     @Override
     public String toString() {
-        return "Samsung{" +
+        return "Apple{" +
                 "color=" + color +
                 ", material=" + material +
                 ", contacts=" + contacts +

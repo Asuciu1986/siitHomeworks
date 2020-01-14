@@ -1,15 +1,15 @@
-package oop2;
+package oop2.phoneapp;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class SamsungGalaxyS10 extends Samsung {
+public class AppleIphone11 extends Apple {
 
-    private static final int batteryLife = 20;
     private int currentBatteryLife;
+    private static final int batteryLife = 20;
     private final String imei;
 
-    public SamsungGalaxyS10(Color color, Material material,String imei) {
+    public AppleIphone11(Color color, Material material,String imei) {
         super(color, material);
         this.currentBatteryLife = batteryLife;
         this.imei = imei;
@@ -25,14 +25,14 @@ public class SamsungGalaxyS10 extends Samsung {
                 texts.put(phoneNumber,new ArrayList<>());
             }
             texts.get(phoneNumber).add(message);
-           //System.out.println("Message sent to " + phoneNumber);
-            currentBatteryLife--;
+            //System.out.println("Message sent to " + phoneNumber);
+            currentBatteryLife-=1;
         }
     };
 
     public void placeCall(String phoneNumber){
         calls.add(phoneNumber);
-        currentBatteryLife -=2;
+        currentBatteryLife-=2;
     };
 
     public int getCurrentBatteryLife() {
@@ -41,8 +41,8 @@ public class SamsungGalaxyS10 extends Samsung {
 
     @Override
     public String toString() {
-        return "SamsungGalaxyS10{" +
-                "currentBatteryLife=" + currentBatteryLife +
+        return "AppleIphone11{" +
+                "phoneBatteryLife=" + currentBatteryLife +
                 ", imei='" + imei + '\'' +
                 "} " + super.toString();
     }
@@ -51,7 +51,7 @@ public class SamsungGalaxyS10 extends Samsung {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SamsungGalaxyS10 that = (SamsungGalaxyS10) o;
+        AppleIphone11 that = (AppleIphone11) o;
         return currentBatteryLife == that.currentBatteryLife &&
                 Objects.equals(imei, that.imei);
     }

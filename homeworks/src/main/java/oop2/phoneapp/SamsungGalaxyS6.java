@@ -1,15 +1,15 @@
-package oop2;
+package oop2.phoneapp;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class AppleIphone11Pro extends Apple {
+public class SamsungGalaxyS6 extends Samsung {
 
-    private int currentBatteryLife;
     private static final int batteryLife = 20;
+    private int currentBatteryLife;
     private final String imei;
 
-    public AppleIphone11Pro(Color color, Material material,String imei) {
+    SamsungGalaxyS6(Color color, Material material, String imei) {
         super(color, material);
         this.currentBatteryLife = batteryLife;
         this.imei = imei;
@@ -26,7 +26,7 @@ public class AppleIphone11Pro extends Apple {
             }
             texts.get(phoneNumber).add(message);
             //System.out.println("Message sent to " + phoneNumber);
-            currentBatteryLife -=1;
+            currentBatteryLife--;
         }
     };
 
@@ -41,7 +41,7 @@ public class AppleIphone11Pro extends Apple {
 
     @Override
     public String toString() {
-        return "AppleIphone11Pro{" +
+        return "SamsungGalaxyS6{" +
                 "currentBatteryLife=" + currentBatteryLife +
                 ", imei='" + imei + '\'' +
                 "} " + super.toString();
@@ -51,7 +51,7 @@ public class AppleIphone11Pro extends Apple {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AppleIphone11Pro that = (AppleIphone11Pro) o;
+        SamsungGalaxyS6 that = (SamsungGalaxyS6) o;
         return currentBatteryLife == that.currentBatteryLife &&
                 Objects.equals(imei, that.imei);
     }

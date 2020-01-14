@@ -1,15 +1,15 @@
-package oop2;
+package oop2.phoneapp;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class AppleIphone11 extends Apple {
+public class AppleIphone11Pro extends Apple {
 
     private int currentBatteryLife;
     private static final int batteryLife = 20;
     private final String imei;
 
-    public AppleIphone11(Color color, Material material,String imei) {
+    public AppleIphone11Pro(Color color, Material material,String imei) {
         super(color, material);
         this.currentBatteryLife = batteryLife;
         this.imei = imei;
@@ -26,13 +26,13 @@ public class AppleIphone11 extends Apple {
             }
             texts.get(phoneNumber).add(message);
             //System.out.println("Message sent to " + phoneNumber);
-            currentBatteryLife-=1;
+            currentBatteryLife -=1;
         }
     };
 
     public void placeCall(String phoneNumber){
         calls.add(phoneNumber);
-        currentBatteryLife-=2;
+        currentBatteryLife -=2;
     };
 
     public int getCurrentBatteryLife() {
@@ -41,8 +41,8 @@ public class AppleIphone11 extends Apple {
 
     @Override
     public String toString() {
-        return "AppleIphone11{" +
-                "phoneBatteryLife=" + currentBatteryLife +
+        return "AppleIphone11Pro{" +
+                "currentBatteryLife=" + currentBatteryLife +
                 ", imei='" + imei + '\'' +
                 "} " + super.toString();
     }
@@ -51,7 +51,7 @@ public class AppleIphone11 extends Apple {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AppleIphone11 that = (AppleIphone11) o;
+        AppleIphone11Pro that = (AppleIphone11Pro) o;
         return currentBatteryLife == that.currentBatteryLife &&
                 Objects.equals(imei, that.imei);
     }

@@ -1,4 +1,4 @@
-package oop2;
+package oop2.phoneapp;
 
 public enum Color {
 
