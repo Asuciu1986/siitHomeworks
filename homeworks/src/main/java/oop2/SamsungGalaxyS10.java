@@ -3,13 +3,13 @@ package oop2;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class SamsungGalaxyS6 extends Samsung {
+public class SamsungGalaxyS10 extends Samsung {
 
     private static final int batteryLife = 20;
     private int currentBatteryLife;
     private final String imei;
 
-    SamsungGalaxyS6(Color color, Material material, String imei) {
+    public SamsungGalaxyS10(Color color, Material material,String imei) {
         super(color, material);
         this.currentBatteryLife = batteryLife;
         this.imei = imei;
@@ -25,7 +25,7 @@ public class SamsungGalaxyS6 extends Samsung {
                 texts.put(phoneNumber,new ArrayList<>());
             }
             texts.get(phoneNumber).add(message);
-            //System.out.println("Message sent to " + phoneNumber);
+           //System.out.println("Message sent to " + phoneNumber);
             currentBatteryLife--;
         }
     };
@@ -41,7 +41,7 @@ public class SamsungGalaxyS6 extends Samsung {
 
     @Override
     public String toString() {
-        return "SamsungGalaxyS6{" +
+        return "SamsungGalaxyS10{" +
                 "currentBatteryLife=" + currentBatteryLife +
                 ", imei='" + imei + '\'' +
                 "} " + super.toString();
@@ -51,7 +51,7 @@ public class SamsungGalaxyS6 extends Samsung {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SamsungGalaxyS6 that = (SamsungGalaxyS6) o;
+        SamsungGalaxyS10 that = (SamsungGalaxyS10) o;
         return currentBatteryLife == that.currentBatteryLife &&
                 Objects.equals(imei, that.imei);
     }

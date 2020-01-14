@@ -1,17 +1,17 @@
 package oop2;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AppleIphone11 extends Apple {
 
+    private int currentBatteryLife;
     private static final int batteryLife = 20;
-    private int phoneBatteryLife;
-
-    private String imei;
+    private final String imei;
 
     public AppleIphone11(Color color, Material material,String imei) {
         super(color, material);
-        this.phoneBatteryLife = batteryLife;
+        this.currentBatteryLife = batteryLife;
         this.imei = imei;
     }
 
@@ -25,17 +25,39 @@ public class AppleIphone11 extends Apple {
                 texts.put(phoneNumber,new ArrayList<>());
             }
             texts.get(phoneNumber).add(message);
-            System.out.println("Message sent to " + phoneNumber);
-            phoneBatteryLife-=1;
+            //System.out.println("Message sent to " + phoneNumber);
+            currentBatteryLife-=1;
         }
     };
 
     public void placeCall(String phoneNumber){
         calls.add(phoneNumber);
-        phoneBatteryLife-=2;
+        currentBatteryLife-=2;
     };
 
-    public int getPhoneBatteryLife() {
-        return phoneBatteryLife;
+    public int getCurrentBatteryLife() {
+        return currentBatteryLife;
+    }
+
+    @Override
+    public String toString() {
+        return "AppleIphone11{" +
+                "phoneBatteryLife=" + currentBatteryLife +
+                ", imei='" + imei + '\'' +
+                "} " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AppleIphone11 that = (AppleIphone11) o;
+        return currentBatteryLife == that.currentBatteryLife &&
+                Objects.equals(imei, that.imei);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(currentBatteryLife, imei);
     }
 }
