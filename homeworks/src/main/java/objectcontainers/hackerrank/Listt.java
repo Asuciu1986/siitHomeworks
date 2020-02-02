@@ -2,13 +2,15 @@ package objectcontainers.hackerrank;
 
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
-public class List {
+public class Listt {
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        java.util.List<Integer> list = new java.util.ArrayList<>();
+        List<Integer> list = new ArrayList<>();
 
         int n = scanner.nextInt();
 
@@ -21,9 +23,11 @@ public class List {
         for (int i = 0; i < nrOfOperations; i++) {
             String operation = scanner.next();
             if (operation.equals("Insert")) {
-                int integerToInsert = scanner.nextInt();
                 int index = scanner.nextInt();
-                list.add(index, integerToInsert);
+                int integerToInsert = scanner.nextInt();
+                list.add(index,integerToInsert);
+
+
             } else {
                 int indexToDelete = scanner.nextInt();
                 list.remove(indexToDelete);

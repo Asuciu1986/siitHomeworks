@@ -6,7 +6,12 @@ import java.lang.reflect.Method;
 
 class Printer
 {
-    
+    <T> void printArray(T[] array) {
+        for(T element : array){
+            System.out.println(element);
+        }
+    }
+
     //Write your code here
 
 }
