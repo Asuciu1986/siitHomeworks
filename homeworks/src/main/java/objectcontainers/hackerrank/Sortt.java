@@ -2,10 +2,6 @@ package objectcontainers.hackerrank;
 
 import java.util.*;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.toList;
 
 class Student implements Comparable<Student> {
     private int id;

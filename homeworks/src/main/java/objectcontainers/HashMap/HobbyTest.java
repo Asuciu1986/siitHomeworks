@@ -11,11 +11,11 @@ public class HobbyTest {
         Persoana persoana2 = new Persoana("Maricica",28,"Feminin");
         Persoana persoana3 = new Persoana("Ionel",30,"Masculin");
 
-
+        //todo lista de adrese unde poate fi practicata
         persoana1.getHobbies().add( new Hobby("swimming", 3, new Address("Romania","Bucuresti","Stefan cel Mare",2)));
-        persoana2.getHobbies().add( new Hobby("soccer", 3, new Address("Romania","Bucuresti","Stefan cel Mare",2)));
-        persoana3.getHobbies().add( new Hobby("cycling", 3, new Address("Romania","Bucuresti","Stefan cel Mare",2)));
-        persoana1.getHobbies().add( new Hobby("running", 3, new Address("Romania","Bucuresti","Stefan cel Mare",2)));
+        persoana2.getHobbies().add( new Hobby("soccer", 3, new Address("Germania","Bucuresti","Stefan cel Mare",2)));
+        persoana3.getHobbies().add( new Hobby("cycling", 3, new Address("Franta","Bucuresti","Stefan cel Mare",2)));
+        persoana1.getHobbies().add( new Hobby("running", 3, new Address("Italia","Bucuresti","Stefan cel Mare",2)));
         persoana2.getHobbies().add( new Hobby("tennis", 3, new Address("Romania","Bucuresti","Stefan cel Mare",2)));
         persoana3.getHobbies().add( new Hobby("fitness", 3, new Address("Romania","Bucuresti","Stefan cel Mare",2)));
 
