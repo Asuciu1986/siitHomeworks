@@ -1,4 +1,4 @@
-package exceptionsandlogging;
+package exceptionsandlogging.customexceptions;
 
 public class CustomBirthDateException extends Exception {
 

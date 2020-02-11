@@ -3,6 +3,9 @@ package exceptionsandlogging;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -11,9 +14,9 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 public class Student {
 
-    private final static String[] genders = {"M","F"};
+    private final static Set<String> genders = new HashSet<>(Arrays.asList("M","F"));
 
-    private long Id;
+    private String id;
 
     private String gender;
 
