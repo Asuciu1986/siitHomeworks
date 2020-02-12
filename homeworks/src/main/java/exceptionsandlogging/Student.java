@@ -12,6 +12,7 @@ import java.util.Set;
 @Getter
 @Setter
 @EqualsAndHashCode
+@ToString
 public class Student {
 
     private final static Set<String> genders = new HashSet<>(Arrays.asList("M","F"));

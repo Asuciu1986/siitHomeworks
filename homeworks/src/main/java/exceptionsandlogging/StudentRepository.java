@@ -7,6 +7,8 @@ import exceptionsandlogging.customexceptions.CustomInvalidGenderException;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 public interface StudentRepository {
 
@@ -14,10 +16,10 @@ public interface StudentRepository {
 
     boolean deleteStudent(String id) throws Exception;
 
-    List<Student> listStudentsByAge(Integer age);
+    Set<Student> listStudentsByAge(Integer age) throws Exception;
 
-    List<Student> listStudentsByLastName(String lastName);
+    TreeSet<Student> listStudentsByLastName();
 
-    List<Student> listStudentByBirthDate(LocalDate birthDate);
+    Set<Student> listStudentByBirthDate(LocalDate birthDate);
 
 }
