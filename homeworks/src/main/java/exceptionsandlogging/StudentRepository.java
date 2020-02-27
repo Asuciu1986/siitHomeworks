@@ -14,12 +14,11 @@ public interface StudentRepository {
 
     void addStudent(String firstName, String lastName, LocalDate birthDate, String gender, String id) throws CustomBirthDateException, CustomEmptyNameException, CustomInvalidGenderException;
 
-    boolean deleteStudent(String id) throws Exception;
+    boolean deleteStudent(String id);
 
-    Set<Student> listStudentsByAge(Integer age) throws Exception;
+    Set<Student> listStudentsByAge(Integer age);
 
     TreeSet<Student> listStudentsByLastName();
 
-    Set<Student> listStudentByBirthDate(LocalDate birthDate);
 
 }

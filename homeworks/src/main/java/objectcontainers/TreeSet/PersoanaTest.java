@@ -10,7 +10,7 @@ public class PersoanaTest {
             public int compare(Persoana o1, Persoana o2) {
 
                 if (o1.getName().equals(o2.getName())) {
-                    if (o1.getAge() == (o1.getAge())) {
+                    if (o1.getAge().equals(o1.getAge())) {
                         return o1.getAge();
                     } else {
                         return o1.getAge()-o2.getAge();
