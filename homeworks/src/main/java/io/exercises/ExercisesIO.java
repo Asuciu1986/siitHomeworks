@@ -1,8 +1,5 @@
 package io.exercises;
 
-
-import sun.security.x509.AttributeNameEnumeration;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,35 +15,39 @@ public class ExercisesIO {
 
     public static void main(String[] args) throws IOException {
 
-        for (String fisier : getListOfFilesAndFolders("D:\\Java")
-        ) {
-            System.out.println(fisier);
-        }
+//        for (String fisier : getListOfFilesAndFolders("D:\\Java")
+//        ) {
+//            System.out.println(fisier);
+//        }
+//
+//        for (String fisier : getListOfFilesAndFoldersWithExtension("D:\\Java", ".docx")
+//        ) {
+//            System.out.println(fisier);
+//        }
+//
+//        System.out.println(checkFileExistence("D:\\"));
+//        System.out.println(checkReadAndWritePermission("Z:\\"));
+//        System.out.println(pathIsFileOrFolder("D:\\Java\\Head First Java - Kathy Sierra _ Bert Rates.pdf"));
+//        System.out.println(compareFilesLexicographically("D:\\Java\\Head First Java - Kathy Sierra _ Bert Rates.pdf", "D:\\Java\\Java_8.pptx"));
+//        System.out.println(lastModificationTime("D:\\Java\\Java_8.pptx"));
+//        //System.out.println(readInputFromConsole());
+//        System.out.println(fileSize("D:\\Java\\Java_8.pptx", "kb"));
+//        System.out.println(Arrays.toString(readFileInByteArray("D:\\Java\\new.txt")));
+//        for (String s : readLineByLine("D:\\Java\\new.txt")
+//        ) {
+//            System.out.println(s);
+//        }
+//        System.out.println(readATextFile("D:\\Java\\new.txt"));
+//        String[] lines = readAFileIntoArray("D:\\Java\\new.txt");
+//        for (String s : lines
+//        ) {
+//            System.out.println(s);
+//
+//        }
 
-        for (String fisier : getListOfFilesAndFoldersWithExtension("D:\\Java", ".docx")
-        ) {
-            System.out.println(fisier);
-        }
-
-        System.out.println(checkFileExistence("D:\\"));
-        System.out.println(checkReadAndWritePermission("Z:\\"));
-        System.out.println(pathIsFileOrFolder("D:\\Java\\Head First Java - Kathy Sierra _ Bert Rates.pdf"));
-        System.out.println(compareFilesLexicographically("D:\\Java\\Head First Java - Kathy Sierra _ Bert Rates.pdf", "D:\\Java\\Java_8.pptx"));
-        System.out.println(lastModificationTime("D:\\Java\\Java_8.pptx"));
-        //System.out.println(readInputFromConsole());
-        System.out.println(fileSize("D:\\Java\\Java_8.pptx", "kb"));
-        System.out.println(Arrays.toString(readFileInByteArray("D:\\Java\\new.txt")));
-        for (String s:readLineByLine("D:\\Java\\new.txt")
-             ) {
-            System.out.println(s);
-        }
-        System.out.println(readATextFile("D:\\Java\\new.txt"));
-        String[] lines = readAFileIntoArray("D:\\Java\\new.txt");
-        for (String s:lines
-             ) {
-            System.out.println(s);
-
-        }
+//        appendToTextFile("/Users/Alex/GitCursSIIT/homeworks/src/main/java/io/exercises/new.txt","Toata lumea are mere");
+//        readThreeLines("/Users/Alex/GitCursSIIT/homeworks/src/main/java/io/exercises/new.txt");
+        System.out.println(longestWord("/Users/Alex/GitCursSIIT/homeworks/src/main/java/io/exercises/new.txt"));
 
     }
 
@@ -165,17 +166,17 @@ public class ExercisesIO {
     }
 
 
-    public static List<String> readLineByLine(String path){
+    public static List<String> readLineByLine(String path) {
 
         List<String> linesList = new ArrayList<>();
-        String line=null;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(path))){
+        String line = null;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
 
-            while((line = bufferedReader.readLine())!=null){
+            while ((line = bufferedReader.readLine()) != null) {
                 linesList.add(line);
 
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -187,15 +188,63 @@ public class ExercisesIO {
     }
 
     public static String[] readAFileIntoArray(String path) {
-        String[] lines=null;
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(path))){
+        String[] lines = null;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(path))) {
             lines = bufferedReader.lines()
                     .toArray(String[]::new);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return lines;
     }
 
+    public static void writeAndReadTextFile(String path, String fileContent) {
+
+        String fileContents = null;
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path))) {
+            bufferedWriter.write(fileContent);
+
+            try {
+                fileContents = new String(Files.readAllBytes(Paths.get(path)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void appendToTextFile (String path, String textToAppend) throws IOException{
+
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(path, true))){
+            bufferedWriter.append(textToAppend);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+
+        System.out.println(new String(Files.readAllBytes(Paths.get(path))));
+    }
+
+    public static void readThreeLines(String path) throws IOException{
+
+        Files.lines(Paths.get(path)).limit(3).forEach(System.out::println);
+    }
+
+    public static String longestWord(String path) throws IOException{
+
+        String fileContents = new String(Files.readAllBytes(Paths.get(path)));
+        String[] words = fileContents.split("[\\W]");
+        int maxLength = 0;
+        String longestWord = null;
+        for (String word:words
+             ) {
+            if(word.length()>maxLength){
+                longestWord = word;
+                maxLength=longestWord.length();
+            }
+        }
+
+        return longestWord;
+    }
 
 }
