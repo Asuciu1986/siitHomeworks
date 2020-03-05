@@ -1,8 +1,6 @@
 package concurrency;
 
-
 import lombok.*;
-
 
 @NoArgsConstructor
 @ToString
@@ -23,3 +21,4 @@ public class FestivalAttendeeThread implements Runnable {
         festivalGate.put(ticketType);
     }
 }
+

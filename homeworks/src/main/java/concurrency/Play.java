@@ -15,13 +15,11 @@ public class Play {
         Thread festivalStatisticsThreadRunnable = new Thread(festivalStatisticsThread);
         festivalStatisticsThreadRunnable.start();
 
-        for(int i=0;i<100;i++){
+        for (int i = 0; i < 100; i++) {
             FestivalAttendeeThread festivalAttendeeThread = new FestivalAttendeeThread(festivalGate);
             Thread festivalAttendeeThreadRunnable = new Thread(festivalAttendeeThread);
             festivalAttendeeThreadRunnable.start();
         }
-
-
 
 
 //        System.out.println(tip);
@@ -31,7 +29,6 @@ public class Play {
 //        System.out.println(tip5);
 //        System.out.println(tip6);
     }
-
 
 
 }

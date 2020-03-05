@@ -2,6 +2,7 @@ package concurrency;
 
 import lombok.Getter;
 import lombok.Setter;
+
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -10,7 +11,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class FestivalGate {
 
     private int number = -1;
-    private boolean available=true;
+    private boolean available = true;
     private Queue<String> tickets = new ConcurrentLinkedQueue<>();
 
     public synchronized void put(TicketType ticketType) {
@@ -37,19 +38,16 @@ public class FestivalGate {
     public Queue<String> get() {
 
         System.out.println("GET TICKETS INVOKED");
-        if (tickets.isEmpty()) {
-            System.out.println("is empty");
-            return tickets;
-        } else {
-            Queue<String> tempQueue = new ConcurrentLinkedQueue<>(tickets);
-            for (String s: tickets
-                 ) {
-                tickets.remove(s);
-            }
-            //System.out.println(tickets);
-            //System.out.println(tempQueue);
-            return tempQueue;
+
+        Queue<String> tempQueue = new ConcurrentLinkedQueue<>(tickets);
+        for (String s : tickets
+        ) {
+            tickets.remove(s);
         }
+        //System.out.println(tickets);
+        //System.out.println(tempQueue);
+        return tempQueue;
+
     }
 }
 
