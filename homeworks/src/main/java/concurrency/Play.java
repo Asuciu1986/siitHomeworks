@@ -15,12 +15,14 @@ public class Play {
         Thread festivalStatisticsThreadRunnable = new Thread(festivalStatisticsThread);
         festivalStatisticsThreadRunnable.start();
 
-        for(int i=0;i<20;i++){
-            FestivalAttendeeThread festivalAttendeeThread = new FestivalAttendeeThread(festivalGate,TicketType.generateRandomTicketType());
+        for(int i=0;i<100;i++){
+            FestivalAttendeeThread festivalAttendeeThread = new FestivalAttendeeThread(festivalGate);
             Thread festivalAttendeeThreadRunnable = new Thread(festivalAttendeeThread);
             festivalAttendeeThreadRunnable.start();
-
         }
+
+
+
 
 //        System.out.println(tip);
 //        System.out.println(tip2);

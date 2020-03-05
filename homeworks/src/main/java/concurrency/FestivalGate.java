@@ -1,38 +1,55 @@
 package concurrency;
 
+import lombok.Getter;
+import lombok.Setter;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.SynchronousQueue;
 
+@Setter
+@Getter
 public class FestivalGate {
 
     private int number = -1;
-    private boolean available;
-    Queue<String> tickets = new ConcurrentLinkedQueue<>();
+    private boolean available=true;
+    private Queue<String> tickets = new ConcurrentLinkedQueue<>();
 
     public synchronized void put(TicketType ticketType) {
-        if (available) {
+        if (!available) {
             try {
                 wait();
-            } catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         tickets.add(ticketType.name());
+        System.out.println(Thread.currentThread().getName() + " a validat biletul de tip " + ticketType);
+        //System.out.println(tickets);
         try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e){
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        available = true;
         notifyAll();
     }
 
-    public synchronized Queue<String> getTickets(){
+    public Queue<String> get() {
 
-        Queue<String> tempQueue = new ConcurrentLinkedQueue<>(tickets);
-        tickets = null;
-
-        return tempQueue;
+        System.out.println("GET TICKETS INVOKED");
+        if (tickets.isEmpty()) {
+            System.out.println("is empty");
+            return tickets;
+        } else {
+            Queue<String> tempQueue = new ConcurrentLinkedQueue<>(tickets);
+            for (String s: tickets
+                 ) {
+                tickets.remove(s);
+            }
+            //System.out.println(tickets);
+            //System.out.println(tempQueue);
+            return tempQueue;
+        }
     }
 }
 

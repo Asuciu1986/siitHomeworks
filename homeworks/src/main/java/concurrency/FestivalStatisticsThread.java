@@ -1,6 +1,5 @@
 package concurrency;
 
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -14,45 +13,48 @@ import java.util.stream.Stream;
 public class FestivalStatisticsThread implements Runnable {
 
     private FestivalGate festivalGate;
+    private int numberOfTickets=0;
 
     private List<String> updatedList = new ArrayList<>();
 
     private Map<String, Integer> statistica = Stream.of(
-            new AbstractMap.SimpleEntry<String, Integer>(TicketType.FREEPASS.name(), 0),
-            new AbstractMap.SimpleEntry<String, Integer>(TicketType.FULL.name(), 0),
-            new AbstractMap.SimpleEntry<String, Integer>(TicketType.FULLVIP.name(), 0),
-            new AbstractMap.SimpleEntry<String, Integer>(TicketType.ONEDAYVIP.name(), 0),
-            new AbstractMap.SimpleEntry<String, Integer>(TicketType.ONEDAY.name(), 0))
+            new AbstractMap.SimpleEntry<>(TicketType.FREEPASS.name(), 0),
+            new AbstractMap.SimpleEntry<>(TicketType.FULL.name(), 0),
+            new AbstractMap.SimpleEntry<>(TicketType.FULLVIP.name(), 0),
+            new AbstractMap.SimpleEntry<>(TicketType.ONEDAYVIP.name(), 0),
+            new AbstractMap.SimpleEntry<>(TicketType.ONEDAY.name(), 0))
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
 
-    public FestivalStatisticsThread(FestivalGate festivalGate) {
+    FestivalStatisticsThread(FestivalGate festivalGate) {
         this.festivalGate = festivalGate;
     }
 
-    public void updateAndPrint(Queue<String> queue) {
+    void updateAndPrint(Queue<String> queue) {
         for (String item : queue) {
             int value = statistica.get(item) + 1;
+            numberOfTickets+=1;
             statistica.replace(item, value);
         }
-
+        System.out.println(numberOfTickets + " people entered");
         statistica.entrySet().stream().forEach(System.out::println);
     }
+
 
     @Override
     public void run() {
 
-        for (; ; ) {
+        while(numberOfTickets<100) {
+            int numberOfTickets=0;
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            if (!festivalGate.getTickets().isEmpty()) {
-                Queue<String> queue = festivalGate.getTickets();
+            Queue<String> queue = festivalGate.get();
+            if (!queue.isEmpty())
                 updateAndPrint(queue);
-            }
 
         }
     }
