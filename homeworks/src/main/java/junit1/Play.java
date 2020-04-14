@@ -1,18 +1,29 @@
 package junit1;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Scanner;
 
 public class Play {
 
     public static void main(String[] args) {
-        Calculator calculator = new Calculator("10 cm + 1 m - 10 mm ","mm");
 
-        int result = calculator.split("10 cm + 1 m - 10 mm ","(\\d+\\s\\w+\\s[+]?[-]?\\s?)");
-        System.out.println(result);
+        Scanner scanner = new Scanner(System.in);
+        String expression;
+        String regex = "(\\d+\\s\\w+\\s?[+]?[-]?\\s?)";
 
+        System.out.println("Output type:");
+        String outputType = scanner.next();
+
+        scanner.nextLine();
+        System.out.print("Enter the non-empty expression:");
+        expression = scanner.nextLine();
+
+
+
+        Calculator calculator = new Calculator(expression,outputType, regex);
+        double result = calculator.calculate();
+        System.out.println(result + " " + outputType);
+
+        scanner.close();
 //        List<String[]> list = new ArrayList<>();
 //
 //
@@ -31,7 +42,7 @@ public class Play {
 //
 //        while (matcher.find()){
 //            System.out.println(matcher.group(0));
-//            list.add(matcher.group(0).split(" "));
+//            list.add(matcher.group(0).calculate(" "));
 //        }
 //
 //        for (String[] op : list
@@ -43,7 +54,7 @@ public class Play {
 //            }
 //
 //        }
-//        String[] components = calculator.split(calculator.getExpression());
+//        String[] components = calculator.calculate(calculator.getExpression());
 //
 //        System.out.println(components[0]);
 //        for (String component:components

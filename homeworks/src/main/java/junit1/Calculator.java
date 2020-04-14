@@ -9,14 +9,17 @@ import java.util.regex.*;
 
 public class Calculator {
 
-    private String expression = "10 cm + 1 m - 10 mm ";
-    public final static String[] formats = {"mm", "cm", "dm", "m","km"};
+    private String expression;
+    private final static String[] formats = {"mm", "cm", "dm", "m","km"};
     private String outputType;
+    private String regex;
     private List<String[]> list = new ArrayList<>();
 
-    public Calculator(String expression, String outputType) {
+
+    public Calculator(String expression, String outputType, String regex) {
         this.expression = expression;
         this.outputType = outputType;
+        this.regex = regex;
     }
 
     public int conversionToMm(int value, String format){
@@ -55,22 +58,22 @@ public class Calculator {
         return a-b;
     }
 
-    public int conversionToUpperMeasure(int result, String outputType){
+    public double conversionToUpperMeasure(double result, String outputType){
         switch (outputType){
             case "cm":
-                result *= 10;
+                result /= 10;
                 break;
 
             case "dm":
-                result *= 100;
+                result /= 100;
                 break;
 
             case "m":
-                result *= 1000;
+                result /= 1000;
                 break;
 
             case "km":
-                result *= 1000000;
+                result /= 1000000;
                 break;
 
         }
@@ -78,10 +81,12 @@ public class Calculator {
         return result;
     }
 
-    public int split(String expression, String regex){
+    public double calculate(){
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(expression);
         int result = 0;
+        int size = 0;
+
         while(matcher.find()){
             list.add(matcher.group(0).split(" "));
         }
@@ -93,7 +98,7 @@ public class Calculator {
             item[0] = String.valueOf(value);
         }
 
-        int size = 0;
+
         if(list.size()==1){
             result = Integer.parseInt(list.get(0)[0]);
         }
@@ -120,7 +125,9 @@ public class Calculator {
             }
 
         }
-        return result;
+
+        return conversionToUpperMeasure(result,outputType);
+
     }
 
     public String getExpression() {
