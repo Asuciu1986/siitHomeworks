@@ -13,7 +13,6 @@ import java.util.Objects;
 public class PackageGroup {
 
     private List<Package> packages = new ArrayList<>();
-    private String identifier;
     private int groupRevenue;
     private int groupValue;
 
