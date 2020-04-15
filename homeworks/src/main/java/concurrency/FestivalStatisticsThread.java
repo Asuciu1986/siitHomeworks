@@ -41,7 +41,6 @@ public class FestivalStatisticsThread implements Runnable {
     public void run() {
 
         while (numberOfTickets < 100) {
-            int numberOfTickets = 0;
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {

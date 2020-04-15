@@ -1,8 +1,5 @@
 package quiz.logistics2;
 
-import lombok.Setter;
-
-@Setter
 public class DeliveryThread implements Runnable {
 
     private PackageGroup packageGroup;

@@ -26,22 +26,23 @@ public class PackageMain {
                         LocalDate.parse(objArray[3], DateTimeFormatter.ofPattern("yyyy-MM-dd"))))
                 .collect(Collectors.toList());
 
-        Map<String,PackageGroup> packagesByKey = new HashMap<>();
+        Map<String, PackageGroup> packagesByKey = new HashMap<>();
+        packagesByKey = Collections.synchronizedMap(packagesByKey);
 
-        for (Package pack: allPackages
-             ) {
+        for (Package pack : allPackages
+        ) {
             String identifier = pack.getLocation() + " " + pack.getDeliveryDate().toString();
-            if(!packagesByKey.containsKey(identifier)){
+            if (!packagesByKey.containsKey(identifier)) {
                 PackageGroup packageGroup = new PackageGroup();
                 packageGroup.addToGroup(pack);
-                packagesByKey.put(identifier,packageGroup);
+                packagesByKey.put(identifier, packageGroup);
             } else {
                 PackageGroup packageGroup = packagesByKey.get(identifier);
                 packageGroup.getPackages().add(pack);
             }
         }
 
-        for (Map.Entry<String, PackageGroup> packageKeyValue: packagesByKey.entrySet()
+        for (Map.Entry<String, PackageGroup> packageKeyValue : packagesByKey.entrySet()
         ) {
             PackageGroup packageGroup = packageKeyValue.getValue();
             DeliveryThread deliveryThread = new DeliveryThread(packageGroup);

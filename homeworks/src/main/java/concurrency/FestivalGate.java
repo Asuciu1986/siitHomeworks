@@ -10,7 +10,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 @Getter
 public class FestivalGate {
 
-    private int number = -1;
     private boolean available = true;
     private Queue<String> tickets = new ConcurrentLinkedQueue<>();
 
@@ -40,8 +39,7 @@ public class FestivalGate {
         System.out.println("GET TICKETS INVOKED");
 
         Queue<String> tempQueue = new ConcurrentLinkedQueue<>(tickets);
-        for (String s : tickets
-        ) {
+        for (String s : tickets) {
             tickets.remove(s);
         }
         //System.out.println(tickets);
